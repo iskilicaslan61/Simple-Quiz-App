@@ -1,5 +1,10 @@
 # 🚀 Simple Quiz App
 
+![GitHub repo size](https://img.shields.io/github/repo-size/your-username/quiz-app)
+![GitHub contributors](https://img.shields.io/github/contributors/your-username/quiz-app)
+![GitHub last commit](https://img.shields.io/github/last-commit/your-username/quiz-app)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/your-username/quiz-app)
+
 A beginner-friendly quiz app built with **HTML, CSS, and JavaScript**. Designed for friends and teams to practice **Git** and **GitHub collaboration** together!
 
 ## 📦 Features
@@ -67,6 +72,9 @@ Just open `index.html` in your browser — no setup needed!
 ---
 
 ## 🙌 Contributors
+
+[![Contributors](https://contrib.rocks/image?repo=your-username/quiz-app)](https://github.com/your-username/quiz-app/graphs/contributors)
+
 - Add your name here after your PR is merged!
 
 ---
