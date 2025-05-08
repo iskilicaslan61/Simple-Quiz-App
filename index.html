@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple Quiz App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple quiz app to practice Git and GitHub collaboration.">
+  <meta name="author" content="Your Team Name">
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .quiz-box { max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 20px; border-radius: 10px; }
+    button { margin-top: 10px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="quiz-box">
+    <h2 id="question">Loading question...</h2>
+    <div id="options"></div>
+    <button onclick="nextQuestion()">Next</button>
+  </div>
+
+  <script>
+    // === Questions Array ===
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Paris", "Rome", "Madrid"],
+        answer: "Paris"
+      },
+      {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        answer: "Mars"
+      }
+      // Friends can ADD more questions here
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      const q = quizData[current];
+      document.getElementById('question').innerText = q.question;
+      const opts = q.options.map(opt => 
+        `<label><input type='radio' name='opt' value='${opt}'> ${opt}</label><br>`
+      ).join('');
+      document.getElementById('options').innerHTML = opts;
+    }
+
+    function nextQuestion() {
+      const selected = document.querySelector('input[name="opt"]:checked');
+      if (selected) {
+        if (selected.value === quizData[current].answer) {
+          alert("Correct!");
+        } else {
+          alert("Wrong! The answer is " + quizData[current].answer);
+        }
+        current = (current + 1) % quizData.length;
+        loadQuestion();
+      } else {
+        alert("Please select an option!");
+      }
+    }
+
+    // Load the first question
+    loadQuestion();
+  </script>
+</body>
+</html>
