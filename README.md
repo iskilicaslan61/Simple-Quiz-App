@@ -4,6 +4,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/your-username/quiz-app)
 ![GitHub last commit](https://img.shields.io/github/last-commit/your-username/quiz-app)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/your-username/quiz-app)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
 
 A beginner-friendly quiz app built with **HTML, CSS, and JavaScript**. Designed for friends and teams to practice **Git** and **GitHub collaboration** together!
 
