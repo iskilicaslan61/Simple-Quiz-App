@@ -272,46 +272,47 @@
       }
 
       function nextQuestion() {
-        const selected = document.querySelector('input[name="opt"]:checked');
-        if (selected) {
-          const isCorrect = selected.value === quizData[current].answer;
-          if (isCorrect) {
-            alert("Correct!");
-            correctAnswers++;
-            // If the user answers 3 questions correctly, gain a heart (if less than 5 hearts)
-            if (correctAnswers % 3 === 0 && hearts < 5) {
-              hearts++;
-              document.getElementById("hearts").innerText = hearts;
-            }
-          } else {
-            alert("Wrong! The answer is " + quizData[current].answer);
-            // Save failed question for later review
-            failedQuestions.push(quizData[current]);
-            hearts--; // Lose a heart on wrong answer
-            document.getElementById("hearts").innerText = hearts;
-          }
-
-          // Move to the next question
-          current++;
-          if (current === quizData.length) {
-            // After all questions, check if we need to ask failed questions
-            if (failedQuestions.length > 0) {
-              // Shuffle the failed questions before asking
-              questionOrder = shuffleArray(failedQuestions);
-              failedQuestions = []; // Clear failed questions after they are shuffled
-              current = 0; // Restart with shuffled failed questions
-            } else {
-              // If no failed questions, restart the quiz
-              questionOrder = [...quizData];
-              current = 0;
-            }
-          }
-
-          loadQuestion();
-        } else {
-          alert("Please select an option!");
-        }
+  const selected = document.querySelector('input[name="opt"]:checked');
+  if (selected) {
+    const isCorrect = selected.value === questionOrder[current].answer;
+    if (isCorrect) {
+      alert("Correct!");
+      correctAnswers++;
+      document.getElementById("correctAnswers").innerText = correctAnswers;
+      if (correctAnswers % 3 === 0 && hearts < 5) {
+        hearts++;
+        document.getElementById("hearts").innerText = hearts;
       }
+    } else {
+      alert("Wrong! The answer is " + questionOrder[current].answer);
+      failedQuestions.push(questionOrder[current]);
+      hearts--;
+      document.getElementById("hearts").innerText = hearts;
+    }
+
+    current++;
+    if (current === questionOrder.length) {
+      if (failedQuestions.length > 0) {
+        questionOrder = shuffleArray(failedQuestions);
+        failedQuestions = [];
+        current = 0;
+      } else {
+        alert("Quiz completed!");
+        questionOrder = [...quizData];
+        current = 0;
+        correctAnswers = 0;
+        hearts = 5;
+        document.getElementById("hearts").innerText = hearts;
+        document.getElementById("correctAnswers").innerText = correctAnswers;
+      }
+    }
+
+    loadQuestion();
+  } else {
+    alert("Please select an option!");
+  }
+}
+
 
       // Function to shuffle an array (Fisher-Yates shuffle)
       function shuffleArray(arr) {
